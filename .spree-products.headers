@@ -1,0 +1,19 @@
+HTTP/1.1 200 OK
+x-frame-options: DENY
+x-xss-protection: 0
+x-content-type-options: nosniff
+x-permitted-cross-domain-policies: none
+referrer-policy: strict-origin-when-cross-origin
+date: Wed, 11 Nov 2026 00:43:50 GMT
+etag: "f1e1161e6b9461446d6fa68d9a12e61a"
+content-type: application/json; charset=utf-8
+vary: Accept, X-Spree-Api-Key, Authorization, X-Spree-Country, X-Spree-Currency, X-Spree-Locale, X-Spree-Channel
+x-ratelimit-limit: 300
+x-ratelimit-remaining: 299
+x-request-id: e3cb2261-ed6f-41ff-a6a8-d63234e539ed
+permissions-policy: camera=(), microphone=(), geolocation=()
+cache-control: max-age=300, public, stale-while-revalidate=30
+x-runtime: 0.063857
+x-robots-tag: noindex, nofollow
+content-length: 111
+

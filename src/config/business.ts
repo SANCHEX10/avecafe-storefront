@@ -1,0 +1,265 @@
+/**
+ * AveCafé business settings and provisional catalog.
+ * Replace the generated catalog photos, references, descriptions and prices
+ * here when the final product catalog is available.
+ */
+export const BUSINESS_CONFIG = {
+  brand: {
+    name: "AveCafé",
+    eyebrow: "Café colombiano de origen",
+    tagline: "De nuestras montañas a tu taza",
+    description:
+      "Descubre cafés colombianos seleccionados por su origen, cultivados con cuidado y tostados para disfrutar cada día.",
+    footerNote: "Café colombiano de origen, hecho para disfrutar.",
+    logo: "/brand/avecafe-logo.png",
+    supportEmail: "",
+    socialLinks: {
+      instagram: "",
+      facebook: "",
+    },
+  },
+  locale: {
+    country: "co",
+    language: "es",
+    currency: "COP",
+    currencyLocale: "es-CO",
+  },
+  theme: {
+    primary: "#3f2b20",
+    primaryForeground: "#fffaf3",
+    ring: "#b68b5b",
+    primaryScale: {
+      50: "#faf7f2",
+      100: "#f1e8dc",
+      200: "#e3d1bb",
+      300: "#d0b492",
+      400: "#bb9567",
+      500: "#a47a4b",
+      600: "#805a36",
+      700: "#65452b",
+      800: "#4d3524",
+      900: "#3f2b20",
+      950: "#281a13",
+    },
+    heroSurface: "#fbf8f2",
+    productSurface: "#f8f2e9",
+  },
+  catalog: {
+    mode: "spree" as "preview" | "spree",
+    title: "Catálogo AveCafé",
+    homeTitle: "Cafés colombianos para descubrir",
+    referencePhotoSource:
+      "Replace with final assets from Referncias venta when available.",
+    provisionalNotice:
+      "Catálogo provisional: referencias, precios, descripciones e imágenes de muestra sujetos a actualización.",
+    imageSheet: "/products/catalog-contact-sheet.png",
+    imageColumns: 5,
+    imageRows: 4,
+    homeProductCount: 4,
+    products: [
+      {
+        reference: "AVC-COF-001",
+        name: "Café de origen Huila",
+        category: "Café en grano",
+        weight: "340 g",
+        price: 34000,
+        description:
+          "Café de perfil suave y aromático, ideal para preparar en métodos filtrados.",
+        imageIndex: 0,
+      },
+      {
+        reference: "AVC-COF-002",
+        name: "Café de montaña Antioquia",
+        category: "Café de origen",
+        weight: "340 g",
+        price: 32000,
+        description:
+          "Una taza balanceada para acompañar la mañana o compartir después de comer.",
+        imageIndex: 1,
+      },
+      {
+        reference: "AVC-COF-003",
+        name: "Selección especial Nariño",
+        category: "Café de origen",
+        weight: "340 g",
+        price: 42000,
+        description:
+          "Café seleccionado de altura, con aroma delicado y una experiencia limpia en taza.",
+        imageIndex: 2,
+      },
+      {
+        reference: "AVC-COF-004",
+        name: "Café Sierra Nevada",
+        category: "Café de origen",
+        weight: "340 g",
+        price: 38000,
+        description:
+          "Granos colombianos de origen único, tostados para resaltar su carácter natural.",
+        imageIndex: 3,
+      },
+      {
+        reference: "AVC-COF-005",
+        name: "Blend de la casa AveCafé",
+        category: "Mezclas de la casa",
+        weight: "340 g",
+        price: 30000,
+        description:
+          "Una mezcla versátil y equilibrada, pensada para disfrutar todos los días.",
+        imageIndex: 4,
+      },
+      {
+        reference: "AVC-ESP-006",
+        name: "Bourbon rosado de temporada",
+        category: "Edición especial",
+        weight: "250 g",
+        price: 52000,
+        description:
+          "Lote de temporada presentado en un formato especial para quienes exploran nuevos cafés.",
+        imageIndex: 5,
+      },
+      {
+        reference: "AVC-ESP-007",
+        name: "Microlote de especialidad",
+        category: "Edición especial",
+        weight: "250 g",
+        price: 79000,
+        description:
+          "Un lote limitado para preparar despacio y apreciar los matices de su origen.",
+        imageIndex: 6,
+      },
+      {
+        reference: "AVC-COF-008",
+        name: "Café descafeinado natural",
+        category: "Café molido",
+        weight: "340 g",
+        price: 36000,
+        description:
+          "Café colombiano descafeinado para disfrutar su sabor a cualquier hora del día.",
+        imageIndex: 7,
+      },
+      {
+        reference: "AVC-DRP-009",
+        name: "Drip coffee para llevar",
+        category: "Café práctico",
+        weight: "Caja x 10 unidades",
+        price: 48000,
+        description:
+          "Porciones individuales para preparar café recién hecho en casa o durante un viaje.",
+        imageIndex: 8,
+      },
+      {
+        reference: "AVC-ACC-010",
+        name: "Prensa francesa de vidrio",
+        category: "Accesorios",
+        weight: "350 ml",
+        price: 78000,
+        description:
+          "Un método clásico para preparar y servir café de manera sencilla.",
+        imageIndex: 9,
+      },
+      {
+        reference: "AVC-KIT-011",
+        name: "Canasta regalo AveCafé",
+        category: "Regalos",
+        weight: "Presentación especial",
+        price: 99000,
+        description:
+          "Una selección de café y detalles para compartir una pausa especial.",
+        imageIndex: 10,
+      },
+      {
+        reference: "AVC-GRD-012",
+        name: "Café molido Huila",
+        category: "Café molido",
+        weight: "340 g",
+        price: 34000,
+        description:
+          "Café de origen molido para una preparación práctica con sabor colombiano.",
+        imageIndex: 11,
+      },
+      {
+        reference: "AVC-COF-013",
+        name: "Tueste espresso colombiano",
+        category: "Café en grano",
+        weight: "340 g",
+        price: 36000,
+        description:
+          "Tueste pensado para preparar espresso y bebidas con leche en casa.",
+        imageIndex: 12,
+      },
+      {
+        reference: "AVC-COF-014",
+        name: "Café para método filtrado",
+        category: "Café molido",
+        weight: "340 g",
+        price: 42000,
+        description:
+          "Molienda sugerida para preparar café filtrado con tus utensilios favoritos.",
+        imageIndex: 13,
+      },
+      {
+        reference: "AVC-DRP-015",
+        name: "Sobres individuales de café",
+        category: "Café práctico",
+        weight: "Caja x 12 unidades",
+        price: 36000,
+        description:
+          "Porciones individuales empacadas para disfrutar café colombiano en cualquier lugar.",
+        imageIndex: 14,
+      },
+      {
+        reference: "AVC-KIT-016",
+        name: "Kit de degustación de orígenes",
+        category: "Regalos",
+        weight: "4 cafés x 100 g",
+        price: 109000,
+        description:
+          "Cuatro muestras para comparar perfiles y encontrar tu origen colombiano favorito.",
+        imageIndex: 15,
+      },
+      {
+        reference: "AVC-ACC-017",
+        name: "Cafetera italiana compacta",
+        category: "Accesorios",
+        weight: "3 tazas",
+        price: 98000,
+        description:
+          "Una cafetera compacta para preparar café intenso en la estufa.",
+        imageIndex: 16,
+      },
+      {
+        reference: "AVC-ACC-018",
+        name: "Cuchara medidora AveCafé",
+        category: "Accesorios",
+        weight: "Acero inoxidable",
+        price: 33000,
+        description:
+          "Accesorio sencillo para medir el café y mantener una preparación consistente.",
+        imageIndex: 17,
+      },
+      {
+        reference: "AVC-COF-019",
+        name: "Cosecha especial colombiana",
+        category: "Café en grano",
+        weight: "250 g",
+        price: 47000,
+        description:
+          "Café de cosecha seleccionada, empacado para conservar su aroma y frescura.",
+        imageIndex: 18,
+      },
+      {
+        reference: "AVC-KIT-020",
+        name: "Caja de regalo Orígenes de Colombia",
+        category: "Regalos",
+        weight: "3 cafés x 250 g",
+        price: 139000,
+        description:
+          "Una caja de regalo con cafés de distintos orígenes para compartir y descubrir.",
+        imageIndex: 19,
+      },
+    ],
+  },
+} as const;
+
+export type BusinessCatalogProduct =
+  (typeof BUSINESS_CONFIG.catalog.products)[number];
