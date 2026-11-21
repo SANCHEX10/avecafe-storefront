@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { CatalogProductImage } from "@/components/products/BusinessCatalog";
-import { BUSINESS_CONFIG, type BusinessCatalogProduct } from "@/config/business";
+import {
+  BUSINESS_CONFIG,
+  type BusinessCatalogProduct,
+} from "@/config/business";
 
 const priceFormatter = new Intl.NumberFormat(
   BUSINESS_CONFIG.locale.currencyLocale,

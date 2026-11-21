@@ -70,7 +70,9 @@ export function getDefaultCountry(): string {
  * Get the default locale code.
  */
 export function getDefaultLocale(): string {
-  return process.env.NEXT_PUBLIC_DEFAULT_LOCALE || BUSINESS_CONFIG.locale.language;
+  return (
+    process.env.NEXT_PUBLIC_DEFAULT_LOCALE || BUSINESS_CONFIG.locale.language
+  );
 }
 
 /** Get the catalog's default currency. */

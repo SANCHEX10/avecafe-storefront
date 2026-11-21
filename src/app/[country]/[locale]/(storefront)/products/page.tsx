@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import { ProductListing } from "@/components/products/ProductListing";
 import { BusinessCatalog } from "@/components/products/BusinessCatalog";
+import { ProductListing } from "@/components/products/ProductListing";
 import { BUSINESS_CONFIG } from "@/config/business";
 import { resolveCurrency } from "@/lib/data/markets";
 import { getProductFilters, getProducts } from "@/lib/data/products";
@@ -45,7 +45,9 @@ export default async function ProductsPage({
         basePath={basePath}
         query={query}
         heading={
-          query ? t("searchResultsFor", { query }) : BUSINESS_CONFIG.catalog.title
+          query
+            ? t("searchResultsFor", { query })
+            : BUSINESS_CONFIG.catalog.title
         }
         showNotice
       />

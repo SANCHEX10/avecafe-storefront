@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { getStoreLogoPath } from "@/lib/store";
 import { SOCIAL_IMAGE_PATH } from "@/lib/seo";
 import {
+  getStoreLogoPath,
   getStoreMetaDescription,
   getStoreName,
   getStoreSeoTitle,

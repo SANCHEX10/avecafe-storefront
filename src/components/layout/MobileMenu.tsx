@@ -232,8 +232,8 @@ export function MobileMenu({
               >
                 {t("allProducts")}
               </Link>
-              {collectionsEnabled && (
-                collections.length > 0 ? (
+              {collectionsEnabled &&
+                (collections.length > 0 ? (
                   <button
                     type="button"
                     onClick={() => pushPanel({ kind: "collections" })}
@@ -250,8 +250,7 @@ export function MobileMenu({
                   >
                     {t("collections")}
                   </Link>
-                )
-              )}
+                ))}
               {marketplaceEnabled && (
                 <Link
                   href={`${basePath}/sellers`}

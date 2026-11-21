@@ -1,10 +1,10 @@
 import type { Category } from "@spree/sdk";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { BusinessProductDetail } from "@/components/products/BusinessProductDetail";
-import { BUSINESS_CONFIG } from "@/config/business";
 import { Breadcrumbs } from "@/components/navigation/Breadcrumbs";
+import { BusinessProductDetail } from "@/components/products/BusinessProductDetail";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { BUSINESS_CONFIG } from "@/config/business";
 import {
   getCachedProduct,
   MARKETPLACE_PRODUCT_PAGE_EXPAND,

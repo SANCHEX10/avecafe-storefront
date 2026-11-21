@@ -833,84 +833,74 @@ export function PaymentSection({
                   {pm.session_required ? (
                     <>
                       {/* Stripe: saved cards selector */}
-                      {pmGatewayId === "stripe" && (
-                        <>
-                          {savedCards.length > 0 && (
-                            <div className="px-4 pt-3">
-                              <RadioGroup
-                                value={selectedCardId ?? "__new__"}
-                                onValueChange={(val) =>
-                                  handleCardSelect(
-                                    val === "__new__" ? null : val,
-                                  )
-                                }
-                                className="gap-0 rounded-sm border overflow-hidden"
+                      {pmGatewayId === "stripe" && savedCards.length > 0 && (
+                        <div className="px-4 pt-3">
+                          <RadioGroup
+                            value={selectedCardId ?? "__new__"}
+                            onValueChange={(val) =>
+                              handleCardSelect(val === "__new__" ? null : val)
+                            }
+                            className="gap-0 rounded-sm border overflow-hidden"
+                          >
+                            {savedCards.map((card, cardIndex) => (
+                              <label
+                                key={card.id}
+                                className={`flex items-center gap-3 px-4 py-3 cursor-pointer transition-colors ${
+                                  selectedCardId ===
+                                  card.gateway_payment_profile_id
+                                    ? "bg-white"
+                                    : "bg-white hover:bg-gray-50"
+                                } ${cardIndex > 0 ? "border-t" : ""}`}
                               >
-                                {savedCards.map((card, cardIndex) => (
-                                  <label
-                                    key={card.id}
-                                    className={`flex items-center gap-3 px-4 py-3 cursor-pointer transition-colors ${
-                                      selectedCardId ===
-                                      card.gateway_payment_profile_id
-                                        ? "bg-white"
-                                        : "bg-white hover:bg-gray-50"
-                                    } ${cardIndex > 0 ? "border-t" : ""}`}
-                                  >
-                                    <RadioGroupItem
-                                      value={
-                                        card.gateway_payment_profile_id ??
-                                        card.id
-                                      }
-                                    />
-                                    <PaymentIcon
-                                      type={getCardIconType(card.brand)}
-                                      format="flatRounded"
-                                      width={34}
-                                    />
-                                    <span className="text-sm text-gray-900 flex-1">
-                                      {t("savedCardLabel", {
-                                        brand: getCardLabel(card.brand),
-                                        digits: card.last4,
-                                      })}
-                                    </span>
-                                    <span className="text-xs text-gray-500">
-                                      {t("cardExpiry", {
-                                        month: String(card.month).padStart(
-                                          2,
-                                          "0",
-                                        ),
-                                        year: String(card.year),
-                                      })}
-                                    </span>
-                                    {card.default && (
-                                      <span className="text-[11px] font-medium text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded">
-                                        {t("default")}
-                                      </span>
-                                    )}
-                                  </label>
-                                ))}
-
-                                {/* Add new card */}
-                                <label
-                                  className={`flex items-center gap-3 px-4 py-3 cursor-pointer border-t transition-colors ${
-                                    isAddingNew
-                                      ? "bg-white"
-                                      : "bg-white hover:bg-gray-50"
-                                  }`}
-                                >
-                                  <RadioGroupItem value="__new__" />
-                                  <CreditCard
-                                    className="w-5 h-5 text-gray-400"
-                                    strokeWidth={1.5}
-                                  />
-                                  <span className="text-sm text-gray-900">
-                                    {t("addNewPaymentMethod")}
+                                <RadioGroupItem
+                                  value={
+                                    card.gateway_payment_profile_id ?? card.id
+                                  }
+                                />
+                                <PaymentIcon
+                                  type={getCardIconType(card.brand)}
+                                  format="flatRounded"
+                                  width={34}
+                                />
+                                <span className="text-sm text-gray-900 flex-1">
+                                  {t("savedCardLabel", {
+                                    brand: getCardLabel(card.brand),
+                                    digits: card.last4,
+                                  })}
+                                </span>
+                                <span className="text-xs text-gray-500">
+                                  {t("cardExpiry", {
+                                    month: String(card.month).padStart(2, "0"),
+                                    year: String(card.year),
+                                  })}
+                                </span>
+                                {card.default && (
+                                  <span className="text-[11px] font-medium text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded">
+                                    {t("default")}
                                   </span>
-                                </label>
-                              </RadioGroup>
-                            </div>
-                          )}
-                        </>
+                                )}
+                              </label>
+                            ))}
+
+                            {/* Add new card */}
+                            <label
+                              className={`flex items-center gap-3 px-4 py-3 cursor-pointer border-t transition-colors ${
+                                isAddingNew
+                                  ? "bg-white"
+                                  : "bg-white hover:bg-gray-50"
+                              }`}
+                            >
+                              <RadioGroupItem value="__new__" />
+                              <CreditCard
+                                className="w-5 h-5 text-gray-400"
+                                strokeWidth={1.5}
+                              />
+                              <span className="text-sm text-gray-900">
+                                {t("addNewPaymentMethod")}
+                              </span>
+                            </label>
+                          </RadioGroup>
+                        </div>
                       )}
 
                       {/* Shared: loading spinner */}

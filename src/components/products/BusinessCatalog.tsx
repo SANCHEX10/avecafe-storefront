@@ -1,5 +1,8 @@
 import Link from "next/link";
-import { BUSINESS_CONFIG, type BusinessCatalogProduct } from "@/config/business";
+import {
+  BUSINESS_CONFIG,
+  type BusinessCatalogProduct,
+} from "@/config/business";
 
 interface BusinessCatalogProps {
   basePath: string;
@@ -33,7 +36,9 @@ export function BusinessCatalog({
       product.reference,
       product.category,
       product.description,
-    ].some((value) => value.toLocaleLowerCase("es-CO").includes(normalizedQuery));
+    ].some((value) =>
+      value.toLocaleLowerCase("es-CO").includes(normalizedQuery),
+    );
   });
   const visibleProducts = limit ? matches.slice(0, limit) : matches;
 

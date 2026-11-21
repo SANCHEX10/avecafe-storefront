@@ -51,9 +51,7 @@ export async function Footer({ basePath, locale, categoryLinks }: FooterProps) {
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
             <span className="text-xl font-bold text-white">{storeName}</span>
-            <p className="mt-4 text-sm text-neutral-400">
-              {storeDescription}
-            </p>
+            <p className="mt-4 text-sm text-neutral-400">{storeDescription}</p>
           </div>
 
           {/* Links */}
@@ -159,7 +157,8 @@ export async function Footer({ basePath, locale, categoryLinks }: FooterProps) {
 
         <div className="mt-8 pt-8 border-t border-neutral-800 text-xs text-neutral-400 text-center">
           <p>
-            &copy; <CurrentYear /> {storeName}. {BUSINESS_CONFIG.brand.footerNote}
+            &copy; <CurrentYear /> {storeName}.{" "}
+            {BUSINESS_CONFIG.brand.footerNote}
           </p>
         </div>
       </div>

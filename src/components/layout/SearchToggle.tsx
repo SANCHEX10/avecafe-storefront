@@ -131,7 +131,6 @@ export function SearchToggle({
             {previewCatalog ? (
               <form onSubmit={handlePreviewSearch}>
                 <input
-                  autoFocus={searchOpen}
                   type="search"
                   value={previewQuery}
                   onChange={(event) => setPreviewQuery(event.target.value)}

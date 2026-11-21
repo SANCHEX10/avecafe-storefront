@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getTranslations } from "next-intl/server";
 import { redirect } from "next/navigation";
+import { getTranslations } from "next-intl/server";
 import { CollectionCard } from "@/components/collections/CollectionCard";
 import { BUSINESS_CONFIG } from "@/config/business";
 import { getCollections } from "@/lib/data/collections";

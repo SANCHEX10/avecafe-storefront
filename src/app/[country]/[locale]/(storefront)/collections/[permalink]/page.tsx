@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-import { redirect } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { getTranslations } from "next-intl/server";
-import { BUSINESS_CONFIG } from "@/config/business";
 import { CollectionHeader } from "@/components/collections/CollectionHeader";
 import { ProductListing } from "@/components/products/ProductListing";
+import { BUSINESS_CONFIG } from "@/config/business";
 import {
   getCollection,
   getCollectionFilters,
