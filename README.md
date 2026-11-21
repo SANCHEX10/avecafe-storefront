@@ -12,11 +12,11 @@ A production-ready, headless ecommerce storefront for [Spree Commerce](https://s
 
 ## Why This Storefront
 
-**TypeScript SDK.** [@spree/sdk](https://www.npmjs.com/package/@spree/sdk) is an official typed client for every Store API endpoint (OpenAPI 3.0 documented). Autocomplete and type safety in your editor, no codegen step to maintain.
+**TypeScript SDK.** [@spree/sdk](https://www.npmjs.com/package/@spree/sdk) is an official typed client for every Store API endpoint 
 
 **DTC and B2B out of the box** run both DTC and B2B (wholesale portal) from a single instance powered by [Spree Channels](https://spreecommerce.org/docs/developer/core-concepts/channels), with exclusive customer group pricing and product gating.
 
-**Multi-region out of the box.** Country, currency, and language switching via URL segments (`/us/en/`, `/de/de/`, `/uk/en/`), powered by [Spree Markets](https://spreecommerce.org/docs/developer/core-concepts/markets). Distinct selling regions bundling geography, currency, and locale in a single store.
+**Multi-region out of the box.** Country, currency, and language switching via URL segments (`/us/en/`, `/de/de/`, `/es/en/`), powered by [Spree Markets](https://spreecommerce.org/docs/developer/core-concepts/markets). Distinct selling regions bundling geography, currency, and locale in a single store.
 
 **One-page checkout.** Guest and authenticated users, multi-shipment, coupon codes, gift cards, and store credit. Stripe, PayPal, and Adyen via Payment Sessions. Card data never touches your server. [Swap providers](https://spreecommerce.org/docs/developer/core-concepts/payments) easily.
 
@@ -91,40 +91,7 @@ Project structure, the `src/lib/data/` server actions, and the JWT-in-httpOnly-c
 - Node.js 20+ (required for Next.js 16)
 - A running Spree Commerce 5.4+
 
-### Installation
 
-**Recommended — scaffold a full project.** [`create-spree-app`](https://spreecommerce.org/docs/developer/create-spree-app/quickstart) sets up a Spree backend, this storefront, and the `spree` CLI together, with the storefront's environment wired to the backend automatically:
-
-```bash
-npx create-spree-app my-store
-```
-
-The storefront lands in `apps/storefront/`.
-
-**Standalone.** To run the storefront on its own against an existing Spree backend, or to work on this repo directly
-
-1. Install dependencies:
-
-    ```bash
-    pnpm install
-    ```
-
-2. Copy the environment file and configure:
-
-    ```bash
-    cp .env.local.example .env.local
-    ```
-
-3. Update `.env.local` with your Spree API credentials:
-
-    ```env
-    SPREE_API_URL=http://localhost:3000
-    SPREE_PUBLISHABLE_KEY=your_publishable_api_key_here
-    ```
-
-> Note: These are server-side only variables (no `NEXT_PUBLIC_` prefix needed).
-
-These two are all you need to boot. Optional variables cover analytics, error tracking, the wholesale portal, transactional emails, and SEO — see the [Environment Variables reference](https://spreecommerce.org/docs/developer/storefront/nextjs/environment-variables), or copy `.env.example`, which lists them all with inline comments.
 
 ### Development
 
@@ -134,28 +101,6 @@ pnpm run dev
 
 Open [http://localhost:3001](http://localhost:3001) in your browser.
 
-#### Working against a local SDK
-
-To develop against unreleased Store API features, point the storefront at a `@spree/sdk` build from a [Spree monorepo](https://github.com/spree/spree) checkout instead of the published package:
-
-```bash
-SPREE_SDK_PATH=/path/to/spree/packages/sdk pnpm install --no-frozen-lockfile
-```
-
-`.pnpmfile.cjs` redirects the dependency at the local path only when `SPREE_SDK_PATH` is set, so the default install is unaffected and nothing local ever reaches `package.json`. Two things follow from it copying the package rather than symlinking it (this project pins module resolution to its own directory, so a symlink outside it would not resolve): build the SDK first (`pnpm build` in the monorepo), and re-run the install above after each rebuild to pick the new build up. The install also rewrites `pnpm-lock.yaml` with the local path — do not commit that change.
-
-From a Spree monorepo worktree, `pnpm wt:storefront` does all of this for you, including the API URL and publishable key.
-
-#### HTTPS Development (Apple Pay / Google Pay)
-
-Testing Apple Pay / Google Pay locally needs a public HTTPS URL (Stripe verifies the payment method domain from the internet). See [Wallet Payments in Development](https://spreecommerce.org/docs/developer/storefront/nextjs/wallet-payments) for the Cloudflare Tunnel setup.
-
-### Production Build
-
-```bash
-pnpm run build
-pnpm start
-```
 
 ### Testing
 

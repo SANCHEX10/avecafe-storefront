@@ -1,11 +1,5 @@
 # NOTICE
 
-Este proyecto es una obra derivada de **Spree Storefront**:
-
-- Repositorio base: https://github.com/spree/storefront
-- Copyright: © 2026 Vendo Connect Inc., Vendo Sp. z o.o.
-- Licencia: MIT (ver archivo [LICENSE](./LICENSE))
-
 ## Modificaciones y código propio
 
 - Marca, identidad visual y personalización "AveCafé"
