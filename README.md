@@ -1,6 +1,6 @@
 # AveCafé — Tienda de café colombiano
 
-Tienda virtual headless para **AveCafé**, construida sobre [Spree Storefront](https://github.com/spree/storefront) (Next.js 16 + React 19) y la API de [Spree Commerce](https://spreecommerce.org) a través de `@spree/sdk`.
+Tienda virtual para **AveCafé**, construida sobre (Next.js 16 + React 19) y la API de [Spree Commerce](https://spreecommerce.org) a través de `@spree/sdk`.
 
 - **Marca:** AveCafé — café colombiano de origen
 - **Región por defecto:** Colombia (`co`) · Español (`es`) · Peso colombiano (`COP`)
