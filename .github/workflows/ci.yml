@@ -60,10 +60,14 @@ jobs:
 
   e2e:
     name: E2E (Playwright + Spree)
-    # Runs on every trigger. Repository secrets are not exposed to runs from
-    # forks, nor to dependabot[bot] runs (those only get Dependabot secrets),
-    # so those runs bootstrap Spree without a Stripe gateway and the
-    # Stripe-paid checkout specs skip themselves; every other spec runs.
+    # Opt-in: E2E boots a full Spree backend and needs a Stripe test key pair,
+    # so it runs on pull requests and manual dispatches only — not on every
+    # push to main. Lint, Type Check and Unit Tests stay required on main.
+    if: github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch'
+    # Repository secrets are not exposed to runs from forks, nor to
+    # dependabot[bot] runs (those only get Dependabot secrets), so those runs
+    # bootstrap Spree without a Stripe gateway and the Stripe-paid checkout
+    # specs skip themselves; every other spec runs.
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
@@ -139,4 +143,4 @@ jobs:
           retention-days: 7
       - name: Tear down
         if: always()
-        run: docker compose -f e2e-backend/docker-compose.yml down -v
+        run: docker compose -f e2e-backend/docker-compose.yml down -v || true
