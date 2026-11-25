@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import { QuantityPickerField } from "@/components/cart/QuantityPickerField";
+import { useCartMoney } from "@/components/cart/useCartMoney";
 import { Button } from "@/components/ui/button";
 import { ProductImage } from "@/components/ui/product-image";
 import {
@@ -16,8 +17,7 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { useCart } from "@/contexts/CartContext";
-import { useFormatMoney } from "@/hooks/useFormatMoney";
+import { MAX_QUANTITY, useCart } from "@/contexts/CartContext";
 import { trackRemoveFromCart, trackViewCart } from "@/lib/analytics/gtm";
 import { extractBasePath } from "@/lib/utils/path";
 
@@ -33,7 +33,6 @@ export function CartDrawer() {
   const {
     cart,
     loading,
-    updating,
     isOpen,
     closeCart,
     updateItem,
@@ -43,7 +42,7 @@ export function CartDrawer() {
   } = useCart();
   const t = useTranslations("cart");
   const tc = useTranslations("common");
-  const formatMoney = useFormatMoney();
+  const formatMoney = useCartMoney();
   const [expressProcessing, setExpressProcessing] = useState(false);
   const pathname = usePathname();
   const basePath = extractBasePath(pathname);
@@ -140,6 +139,9 @@ export function CartDrawer() {
               >
                 {tc("continueShopping")}
               </Link>
+              <Button size="lg" className="mt-6 w-full" disabled>
+                {t("checkout")}
+              </Button>
             </div>
           ) : (
             <ul className="divide-y divide-gray-200">
@@ -180,7 +182,6 @@ export function CartDrawer() {
                               trackRemoveFromCart(item, cart.currency);
                             }
                           }}
-                          disabled={updating}
                           aria-label={t("removeItemLabel", { name: item.name })}
                         >
                           <Trash className="w-4 h-4" />
@@ -198,11 +199,16 @@ export function CartDrawer() {
                       <div className="mt-3 flex items-center justify-between">
                         <QuantityPickerField
                           quantity={item.quantity}
+                          max={MAX_QUANTITY}
                           onQuantityChange={(quantity) =>
                             updateItem(item.id, quantity)
                           }
-                          disabled={updating}
                         />
+                        {item.quantity >= MAX_QUANTITY && (
+                          <span className="text-xs font-medium text-red-600">
+                            {t("soldOut")}
+                          </span>
+                        )}
 
                         <div className="text-sm font-medium">
                           {item.compare_at_amount &&
@@ -214,20 +220,15 @@ export function CartDrawer() {
                                 {formatMoney(
                                   item.compare_at_amount,
                                   item.currency,
-                                  { unitPrice: true },
                                 )}
                               </span>
                               <span className="text-red-600">
-                                {formatMoney(item.price, item.currency, {
-                                  unitPrice: true,
-                                })}
+                                {formatMoney(item.price, item.currency)}
                               </span>
                             </>
                           ) : (
                             <span className="text-gray-900">
-                              {formatMoney(item.price, item.currency, {
-                                unitPrice: true,
-                              })}
+                              {formatMoney(item.price, item.currency)}
                             </span>
                           )}
                         </div>
@@ -268,6 +269,12 @@ export function CartDrawer() {
                       {t("shippingCalculatedAtCheckout")}
                     </span>
                   </div>
+                  <div className="flex justify-between items-center font-semibold">
+                    <span>{tc("total")}</span>
+                    <span data-testid="cart-total">
+                      {formatMoney(cart?.total, cart?.currency)}
+                    </span>
+                  </div>
                 </div>
               </>
             )}
@@ -303,13 +310,6 @@ export function CartDrawer() {
               </div>
             )}
           </SheetFooter>
-        )}
-
-        {/* Loading overlay */}
-        {updating && (
-          <div className="absolute inset-0 bg-white/50 flex items-center justify-center">
-            <div className="w-8 h-8 border-4 border-gray-600 border-t-transparent rounded-full animate-spin" />
-          </div>
         )}
       </SheetContent>
     </Sheet>

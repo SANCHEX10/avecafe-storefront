@@ -119,7 +119,9 @@
     "amountDue": "Do zapłaty",
     "failedToAddItem": "Nie udało się dodać tego produktu do koszyka. Spróbuj ponownie.",
     "failedToUpdateItem": "Nie udało się zaktualizować koszyka. Spróbuj ponownie.",
-    "failedToRemoveItem": "Nie udało się usunąć tego produktu z koszyka. Spróbuj ponownie."
+    "failedToRemoveItem": "Nie udało się usunąć tego produktu z koszyka. Spróbuj ponownie.",
+    "soldOut": "Wyprzedane",
+    "notEnoughStock": "Dostępnych tylko {max} sztuk"
   },
   "products": {
     "allProducts": "Wszystkie produkty",

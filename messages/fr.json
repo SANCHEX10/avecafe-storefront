@@ -119,7 +119,9 @@
     "amountDue": "Montant du",
     "failedToAddItem": "Impossible d'ajouter cet article a votre panier. Veuillez reessayer.",
     "failedToUpdateItem": "Impossible de mettre a jour votre panier. Veuillez reessayer.",
-    "failedToRemoveItem": "Impossible de retirer cet article de votre panier. Veuillez reessayer."
+    "failedToRemoveItem": "Impossible de retirer cet article de votre panier. Veuillez reessayer.",
+    "soldOut": "Épuisé",
+    "notEnoughStock": "Seulement {max} unités disponibles"
   },
   "products": {
     "allProducts": "Tous les produits",

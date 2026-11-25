@@ -119,7 +119,9 @@
     "amountDue": "Fälliger Betrag",
     "failedToAddItem": "Dieser Artikel konnte nicht zum Warenkorb hinzugefügt werden. Bitte versuchen Sie es erneut.",
     "failedToUpdateItem": "Ihr Warenkorb konnte nicht aktualisiert werden. Bitte versuchen Sie es erneut.",
-    "failedToRemoveItem": "Dieser Artikel konnte nicht aus Ihrem Warenkorb entfernt werden. Bitte versuchen Sie es erneut."
+    "failedToRemoveItem": "Dieser Artikel konnte nicht aus Ihrem Warenkorb entfernt werden. Bitte versuchen Sie es erneut.",
+    "soldOut": "Ausverkauft",
+    "notEnoughStock": "Nur {max} Einheiten verfügbar"
   },
   "products": {
     "allProducts": "Alle Produkte",

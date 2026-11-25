@@ -8,10 +8,10 @@ import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import { QuantityPickerField } from "@/components/cart/QuantityPickerField";
+import { useCartMoney } from "@/components/cart/useCartMoney";
 import { Button } from "@/components/ui/button";
 import { ProductImage } from "@/components/ui/product-image";
-import { useCart } from "@/contexts/CartContext";
-import { useFormatMoney } from "@/hooks/useFormatMoney";
+import { MAX_QUANTITY, useCart } from "@/contexts/CartContext";
 import { trackRemoveFromCart, trackViewCart } from "@/lib/analytics/gtm";
 import { extractBasePath } from "@/lib/utils/path";
 
@@ -24,14 +24,14 @@ const ExpressCheckoutButton = dynamic(
 );
 
 export default function CartPage() {
-  const { cart, loading, updating, updateItem, removeItem } = useCart();
+  const { cart, loading, updateItem, removeItem } = useCart();
   const [expressProcessing, setExpressProcessing] = useState(false);
   const pathname = usePathname();
   const basePath = extractBasePath(pathname);
   const viewCartFiredRef = useRef(false);
   const t = useTranslations("cart");
   const tc = useTranslations("common");
-  const formatMoney = useFormatMoney();
+  const formatMoney = useCartMoney();
 
   // Track view_cart when cart loads with items
   useEffect(() => {
@@ -87,6 +87,11 @@ export default function CartPage() {
               </Link>
             </Button>
           </div>
+          <div className="mt-4">
+            <Button size="lg" variant="outline" disabled>
+              {t("proceedToCheckout")}
+            </Button>
+          </div>
         </div>
       </div>
     );
@@ -125,28 +130,33 @@ export default function CartPage() {
                       {item.options_text}
                     </p>
                   )}
-                  <p className="mt-2 text-lg font-semibold text-gray-900">
-                    {formatMoney(item.price, item.currency, {
-                      unitPrice: true,
-                    })}
+                  <p className="mt-2 text-gray-500">
+                    {formatMoney(item.price, item.currency)}
                   </p>
+                  <p className="mt-1 text-lg font-semibold text-gray-900">
+                    {formatMoney(item.total, item.currency)}
+                  </p>
+                  {item.quantity >= MAX_QUANTITY && (
+                    <p className="text-sm font-medium text-red-600">
+                      {t("soldOut")}
+                    </p>
+                  )}
                 </div>
 
                 {/* Quantity & Actions */}
                 <div className="flex flex-col items-end gap-2">
                   <QuantityPickerField
                     quantity={item.quantity}
+                    max={MAX_QUANTITY}
                     onQuantityChange={(quantity) =>
                       updateItem(item.id, quantity)
                     }
-                    disabled={updating}
                   />
                   <Button
                     variant="destructive"
                     size="sm"
                     aria-label={t("removeItemLabel", { name: item.name })}
                     onClick={() => handleRemove(item)}
-                    disabled={updating}
                   >
                     {tc("remove")}
                   </Button>
@@ -196,7 +206,10 @@ export default function CartPage() {
                 <dt className="text-lg font-medium text-gray-900">
                   {tc("total")}
                 </dt>
-                <dd className="text-lg font-bold text-gray-900">
+                <dd
+                  className="text-lg font-bold text-gray-900"
+                  data-testid="cart-total"
+                >
                   {formatMoney(cart.total, cart.currency)}
                 </dd>
               </div>

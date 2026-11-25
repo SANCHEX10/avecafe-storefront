@@ -11,6 +11,7 @@ export interface QuantityPickerProps {
   incrementLabel: string;
   quantityLabel: string;
   disabled?: boolean;
+  max?: number;
   size?: "sm" | "lg";
 }
 
@@ -21,6 +22,7 @@ export function QuantityPicker({
   incrementLabel,
   quantityLabel,
   disabled = false,
+  max = Number.POSITIVE_INFINITY,
   size = "sm",
 }: QuantityPickerProps): React.JSX.Element {
   // Holds the raw text while the user is typing; null means "not editing",
@@ -88,7 +90,7 @@ export function QuantityPicker({
         variant="ghost"
         size={buttonSize}
         className="rounded-md disabled:opacity-30"
-        disabled={disabled}
+        disabled={disabled || quantity >= max}
         onClick={() => onQuantityChange(quantity + 1)}
         aria-label={incrementLabel}
       >

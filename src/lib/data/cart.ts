@@ -181,13 +181,12 @@ export async function updateCartItem(
   return actionResult(async () => {
     const options = await getCartOptions(surface);
     const cartId = await requireCartId(surface);
+    const items = getClientForSurface(surface).carts.items;
 
-    const cart = await getClientForSurface(surface).carts.items.update(
-      cartId,
-      lineItemId,
-      { quantity },
-      options,
-    );
+    const cart =
+      quantity < 1
+        ? await items.delete(cartId, lineItemId, options)
+        : await items.update(cartId, lineItemId, { quantity }, options);
 
     updateTag(cartTag(surface));
     return { cart };
